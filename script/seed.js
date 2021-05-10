@@ -27,6 +27,12 @@ async function seed() {
     Tag.create({title: 'Noodle Renaissance', imageUrl: 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/183841021_2510139835799033_6325330936607124315_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=wFSdioWBLRoAX8Do4cC&_nc_ht=scontent-lga3-1.xx&oh=5876aa4fd3697a63111698dc9dfe82f7&oe=60BD5E5B'}),
   ])
 
+   await users[0].addTag(tags[0])
+    await users[1].addTag(tags[1])
+    await users[2].addTag(tags[2])
+    await users[3].addTag(tags[3])
+
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
   return {
@@ -36,12 +42,16 @@ async function seed() {
       kasey: users[2],
       em: users[3]
     },
-    tags: {
-      one : tags[0],
-      two : tags[1],
-      three : tags[2],
-      four : tags[3]
-    }
+    // tags: {
+    //   one : tags[0],
+    //   two : tags[1],
+    //   three : tags[2],
+    //   four : tags[3]
+    // }
+    // await users.karina.addTag(one)
+    // await users.kathy.addTag(two)
+    // await users.kasey.addTag(three)
+    // await users.em.addTag(four)
   }
 }
 
