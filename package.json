@@ -4,7 +4,7 @@
   "description": "Some boilerplate code to get you started - get shakin'!",
   "main": "index.js",
   "engines": {
-    "node":"14.15.1"
+    "node": "14.15.1"
   },
   "scripts": {
     "seed": "node script/seed.js",
