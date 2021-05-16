@@ -18,3 +18,13 @@ router.get('/', requireToken, isAdmin, async (req, res, next) => {
     next(err);
   }
 });
+
+router.delete('/:id', requireToken, isAdmin, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    await user.destroy();
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+});
