@@ -11,7 +11,9 @@ router.get('/', async (req, res, next) => {
     const tags = await Tag.findAll();
     res.json(tags);
   } catch (err) {
-    next(err);
+    console.log(err);
+    console.error('error in the getMemes thunk');
+    // next(err);
   }
 });
 
