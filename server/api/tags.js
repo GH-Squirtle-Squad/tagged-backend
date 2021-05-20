@@ -3,7 +3,10 @@ const {
   models: { Tag },
 } = require('../db');
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({
+  dest: 'uploads/',
+  limits: { fieldSize: 2 * 1024 * 1024 },
+});
 const uploadImage = require('../s3');
 
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
