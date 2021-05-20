@@ -17,9 +17,7 @@ router.get('/', async (req, res, next) => {
     const tags = await Tag.findAll();
     res.json(tags);
   } catch (err) {
-    console.log(err);
-    console.error('error in the getMemes thunk');
-    // next(err);
+    next(err);
   }
 });
 
@@ -27,13 +25,11 @@ router.post('/', upload.single('tag'), async (req, res, next) => {
   try {
     const file = req.file;
     const info = req.body;
-    console.log('file ', file, 'info ', info);
     const result = await uploadImage(file);
-    console.log('result ', result);
 
     const createdTag = Tag.create({
       imageUrl: result.Location,
-      userId: result.id,
+      userId: Number(result.id),
       title: result.title,
     });
 
