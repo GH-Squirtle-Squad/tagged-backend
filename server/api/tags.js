@@ -2,12 +2,6 @@ const router = require('express').Router();
 const {
   models: { Tag },
 } = require('../db');
-const multer = require('multer');
-const upload = multer({
-  dest: 'uploads/',
-  limits: { fieldSize: 25 * 1024 * 1024 },
-});
-const uploadImage = require('../s3');
 
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 module.exports = router;
@@ -23,13 +17,9 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    // const info = req.body;
-    // const result = await uploadImage(info);
-
     console.log(req.body);
-
     const createdTag = Tag.create({
-      imageUrl: req.body,
+      imageUrl: req.body.imageUrl,
       userId: req.body.userId,
       title: req.body.title,
     });
