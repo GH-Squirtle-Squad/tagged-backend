@@ -24,8 +24,9 @@ router.get('/', async (req, res, next) => {
 router.post('/', upload.single('tag'), async (req, res, next) => {
   try {
     const file = req.file;
+    console.log('FILE', file);
     const info = req.body;
-    const result = await uploadImage(file);
+    const result = await uploadImage(info);
 
     const createdTag = Tag.create({
       imageUrl: result.Location,
