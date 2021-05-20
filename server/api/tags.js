@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     console.log(req.body);
-    const createdTag = Tag.create({
+    const createdTag = await Tag.create({
       imageUrl: req.body.imageUrl,
       userId: req.body.userId,
       title: req.body.title,
