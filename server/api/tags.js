@@ -30,7 +30,7 @@ router.post('/', async (req, res, next) => {
 
     const createdTag = Tag.create({
       imageUrl: req.body,
-      userId: req.user.id,
+      userId: req.body.userId,
       title: req.body.title,
     });
 
