@@ -5,7 +5,7 @@ const {
 const multer = require('multer');
 const upload = multer({
   dest: 'uploads/',
-  limits: { fieldSize: 2 * 1024 * 1024 },
+  limits: { fieldSize: 25 * 1024 * 1024 },
 });
 const uploadImage = require('../s3');
 
