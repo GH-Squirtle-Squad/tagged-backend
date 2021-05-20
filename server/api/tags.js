@@ -21,17 +21,17 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.post('/', upload.single('tag'), async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    const file = req.file;
-    console.log('FILE', file);
-    const info = req.body;
-    const result = await uploadImage(info);
+    // const info = req.body;
+    // const result = await uploadImage(info);
+
+    console.log(req.body);
 
     const createdTag = Tag.create({
-      imageUrl: result.Location,
-      userId: Number(result.id),
-      title: result.title,
+      imageUrl: req.body,
+      userId: req.user.id,
+      title: req.body.title,
     });
 
     console.log(createdTag);
