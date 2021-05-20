@@ -4,7 +4,7 @@ const {
 } = require('../db');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
-const uploadImage = require('./s3');
+const uploadImage = require('../s3');
 
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 module.exports = router;
