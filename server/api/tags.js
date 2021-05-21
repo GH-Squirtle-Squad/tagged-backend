@@ -15,6 +15,22 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/s3', async (req, res, next) => {
+  try {
+    const options = {
+      keyPrefix: "uploads/",
+      bucket: process.env.BUCKET_NAME,
+      region: process.env.REGION,
+      accessKey: process.env.KEY,
+      secretKey: process.env.SECRET,
+      successActionStatus: 201
+    }
+    res.json(options);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post('/', async (req, res, next) => {
   try {
     console.log(req.body);
